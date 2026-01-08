@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models (optional - if too large)
+# models/*.pkl
+
+# Data (uncomment if dataset is huge)
+# data/raw/*.csv
+
+# OS
+.DS_Store
+
+# API
+*.log
+models/random_forest_car_price_model.pkl
+models/random_forest_model.pkl
