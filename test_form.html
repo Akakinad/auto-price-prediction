@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .car-info {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚗 Car Price Prediction API Tester</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: 2015 VW Golf</h2>
+        <div class="car-info">
+            Year: 2015 | Mileage: 80,000 km | Engine: 1600cc | Transmission: Auto
+        </div>
+        <button onclick="testVW()">Predict Price</button>
+        <div id="result1"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: 2005 Old Car</h2>
+        <div class="car-info">
+            Year: 2005 | Mileage: 200,000 km | Engine: 1400cc | Transmission: Manual
+        </div>
+        <button onclick="testOldCar()">Predict Price</button>
+        <div id="result2"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: 2018 BMW</h2>
+        <div class="car-info">
+            Year: 2018 | Mileage: 30,000 km | Engine: 3000cc | Transmission: Auto
+        </div>
+        <button onclick="testBMW()">Predict Price</button>
+        <div id="result3"></div>
+    </div>
+
+    <script>
+        async function testVW() {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    year: 2015, mileage: 80000, volume: 1600,
+                    make: 82, fuel_type: 1, transmission: 0
+                })
+            });
+            const data = await response.json();
+            document.getElementById('result1').innerHTML = 
+                `<div class="result">💰 Predicted Price: $${data.predicted_price.toFixed(2)}</div>`;
+        }
+
+        async function testOldCar() {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    year: 2005, mileage: 200000, volume: 1400,
+                    make: 50, fuel_type: 1, transmission: 1
+                })
+            });
+            const data = await response.json();
+            document.getElementById('result2').innerHTML = 
+                `<div class="result">💰 Predicted Price: $${data.predicted_price.toFixed(2)}</div>`;
+        }
+
+        async function testBMW() {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    year: 2018, mileage: 30000, volume: 3000,
+                    make: 11, fuel_type: 1, transmission: 0
+                })
+            });
+            const data = await response.json();
+            document.getElementById('result3').innerHTML = 
+                `<div class="result">💰 Predicted Price: $${data.predicted_price.toFixed(2)}</div>`;
+        }
+    </script>
+</body>
+</html>
