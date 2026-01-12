@@ -197,6 +197,29 @@ curl -X POST http://localhost:5000/predict \
 
 ---
 
+## 🎨 Live Demo (HTML Interface)
+
+Test the API directly in your browser!
+
+**Run the demo:**
+```bash
+# Terminal 1: Start API
+python api.py
+
+# Terminal 2: Open HTML tester
+open test_form.html
+```
+
+**Screenshot:**
+![Demo Interface](images/demo_screenshot.png)
+
+The interface lets you test 3 different car scenarios:
+1. **2015 VW Golf** → $7,831
+2. **2005 Old Car** → $2,839 (low price due to age & mileage)
+3. **2018 BMW** → $9,787 (high price due to recent year & luxury brand)
+
+---
+
 ## 📊 Dataset
 
 - **Source**: Car listings from 2019
