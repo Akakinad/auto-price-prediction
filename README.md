@@ -52,6 +52,31 @@ Output: $7,831.50 (Confidence: 93.2%)
 
 ---
 
+## 📦 Model Files
+
+### Available Models
+
+| Model | R² Score | Size | Location |
+|-------|----------|------|----------|
+| Linear Regression | 66.2% | Small | `models/linear_regression_model.pkl` |
+| **XGBoost** 🏆 | **93.2%** | Small | `models/xgboost_model.pkl` |
+| Random Forest | 92.2% | 346 MB | [📥 Download from Google Drive](https://drive.google.com/file/d/12SgOM65rnbqwEVwGbqDl-gERr41Hkngj/view?usp=sharing) |
+
+**Note:** Random Forest model is hosted on Google Drive due to GitHub's 100 MB file size limit.
+
+### Using the Models
+```python
+import joblib
+
+# Load XGBoost (recommended - best performance)
+model = joblib.load('models/xgboost_model.pkl')
+
+# Or download Random Forest from Google Drive and load it
+# model = joblib.load('path/to/downloaded/random_forest_model.pkl')
+```
+
+---
+
 ## 🎯 Key Features
 
 - **Data Cleaning**: Handled 56K+ rows, removed outliers, filled missing values
